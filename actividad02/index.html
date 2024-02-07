@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        html {
+            background-color: grey;
+
+        }
+    </style>
+
+    <h1>Actividad 2</h1>
+
+    <script>
+        /*
+        Supongamos que estás trabajando con una colección de objetos que representan diferentes obras de arte en una galería. Cada objeto contiene información sobre el artista, el año de la obra, el título, y si está actualmente en exhibición.
+        
+
+Del siguiente objeto:
+
+*/
+const ArtGallery = [ 
+ { id: 1, artist: "Monet", title: "Water Lilies", year: 1916, isExhibited: true },
+ { id: 2, artist: "Van Gogh", title: "Starry Night", year: 1889, isExhibited: true }, 
+ { id: 3, artist: "Da Vinci", title: "Mona Lisa", year: 1503, isExhibited: false }, 
+ { id: 4, artist: "Picasso", title: "Guernica", year: 1937, isExhibited: true }, 
+ { id: 5, artist: "Rembrandt", title: "The Night Watch", year: 1642, isExhibited: false },
+ { id: 6, artist: "Dali", title: "The Persistence of Memory", year: 1931, isExhibited: true }, 
+ { id: 7, artist: "Munch", title: "The Scream", year: 1893, isExhibited: false }, 
+ { id: 8, artist: "Klimt", title: "The Kiss", year: 1907, isExhibited: true }, 
+ { id: 9, artist: "Hopper", title: "Nighthawks", year: 1942, isExhibited: false }, 
+ { id: 10, artist: "Vermeer", title: "Girl with a Pearl Earring", year: 1665, isExhibited: true }
+ ];
+
+ 
+// Actividades:
+
+// Usa forEach y Template Strings para mostrar los títulos de las obras por consola en el formato:
+// "La obra TITULO DE OBRA por el autor AUTOR DE LA OBRA (AÑO) NO SE/SE encuentra exhibida"
+
+/*
+ArtGallery.forEach (artwork => {
+
+const { title, artist, year, isExhibited } = artwork;
+  const exhibitionStatus = isExhibited ? "SE" : "NO SE";
+  console.log(`La obra ${title} por el autor ${artist} (${year}) ${exhibitionStatus} encuentra exhibida`);
+});
+*/
+
+// Usa map para crear un nuevo array que contenga solo los títulos de las obras y muéstralo en consola.
+
+/*
+const titlesArray = ArtGallery.map(artwork => artwork.title);
+console.log(titlesArray)
+*/
+
+// Usar filter para crear un array de obras que están actualmente en exhibición y mostrarlas por consola.
+
+/*
+const isExhibited = ArtGallery.filter(artwork => artwork.isExhibited)
+console.log(isExhibited)
+*/
+
+// Crear una función de búsqueda que reciba como parámetro un título de obra, y que utilice find para buscar esa obra específica
+
+/*
+function obraPorTitulo(titulo) {
+    return ArtGallery.find(obra => obra.title === titulo)
+}
+
+const obraBuscada = obraPorTitulo ("The Scream")
+    if (obraBuscada) {
+        console.log("La obra es esta", obraBuscada) 
+    }
+
+    else {
+        console.log("No es la obra")
+    }
+*/
+
+// Usa some para verificar si hay obras en la galería de un año específico (por ejemplo, 1503).
+
+
+/*
+    const yearToCheck = 1503;
+    const yearArtwork = ArtGallery.some (obra => obra.año === yearToCheck)
+   
+    if(yearArtwork) {
+        console.log(`Tenemos la obra del year ${yearToCheck}`)
+    } else {
+        console.log(`No tenemos la obra de ese year ${yearToCheck}`)
+    }
+*/
+
+
+// Emplea every para comprobar si todas las obras son posteriores a un cierto año, por ejemplo tu año de nacimiento.
+
+/*
+const yearNacimiento = 2000;
+const todasPosteriores = ArtGallery.every (artwork => artwork.year > yearNacimiento);
+
+if (todasPosteriores) {
+    conosle.log (`Todas las obras son posteriores al ${yearNacimiento}`)
+} else {
+    console.log (`Todas las obras son anteriores al ${yearNacimiento}`)
+}
+*/
+
+// Usa findIndex para encontrar la posición en el array de una obra específica.
+
+/*
+function posicionObra(title) {
+const indice = ArtGallery.findIndex(obra => obra.title === title)
+return indice !== -1 ? `La obra "${title}" se encuentra en la posición ${indice}` : `La obra "${title}" no fue encontrada`
+}
+
+const posicionGuernica = posicionObra("Guernica")
+console.log(posicionGuernica)
+*/
+
+// Agregar una función que permita añadir nuevas obras al array galería
+
+/*
+function addArtwork(id, artist, title, year, isExhibited) {
+const newArtwork = {id, artist, title, year, isExhibited};
+ArtGallery.push(newArtwork);
+console.log(`Se ha añadido la obra "${title}" de ${artist} al array galería`)
+}  
+
+addArtwork (12, "Miguel Ángel", "La creación de Adán", 1512, true)
+console.log(ArtGallery)
+*/
+
+// Agregar una función que permita cambiar el estado de isExhibited de una obra específica enviándole el id
+
+function cambiarEstadoExhibicion(idObra, nuevoEstado) {
+    const obraIndex = ArtGallery.findIndex (obra => obra.id === idObra);
+
+    if (obraIndex !== -1) {
+        ArtGallery[obraIndex].isExhibited = nuevoEstado;
+        console.log(`Se ha cambiado el estado de exhibición de la obra con ID ${idObra} a ${nuevoEstado}`)
+    } else {
+        console.log(`No se encontró ninguna obra con ${idObra}`)
+    }
+}
+
+cambiarEstadoExhibicion (2, true)
+console.log(ArtGallery)
+
+        
+    </script>
+
+</body>
+</html>  
